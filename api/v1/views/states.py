@@ -5,7 +5,7 @@ all u need to manipulate the states
 from api.v1.app import app_views
 from models import storage
 from models.state import State
-from flask import jsonify, abort, request, make_response
+from flask import jsonify, abort, request
 
 
 @app_views.route('/states', strict_slashes=False, methods=['GET'])
@@ -31,13 +31,11 @@ def get_state(state_id):
 @app_views.route('/states/<state_id>', strict_slashes=False, methods=['DELETE'])
 def delete_state(state_id):
     """delete a state"""
-    try:
-        state = storage.get(State, state_id)
-        storage.delete(state)
-        state.save()
-        return jsonify({}), 200
-    except:
+    if not storage.get(State, state_id):
         abort(404)
+    storage.delete(storage.get(State, state_id))
+    storage.save()
+    return (jsonify({}), 200)
 
 
 @app_views.route('/states', strict_slashes=False, methods=['POST'])
