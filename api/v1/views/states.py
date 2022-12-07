@@ -12,7 +12,7 @@ from flask import jsonify, abort, request, make_response
 def get_states():
     """ger states"""
     states = []
-    for i in storage.all('State').values:
+    for i in storage.all(State).values:
         states.append(i.to_dict())
 
     return jsonify(states)
