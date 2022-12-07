@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-index
+all u need to manipulate the states
 """
 from api.v1.app import app_views
 from models import storage
