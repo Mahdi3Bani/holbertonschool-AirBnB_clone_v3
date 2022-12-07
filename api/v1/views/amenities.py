@@ -54,21 +54,21 @@ def post_amenity():
     return (jsonify(obj.to_dict()), 201)
 
 
-@app_views.route('/amenities/<amenity_id>', methods=["PUT"])
-def put_amenity(amenities_id):
+@app_views.route('/amenities/<amenity_id>', methods=['PUT'],
+                 strict_slashes=False)
+def put_amenity(amenity_id):
     """Update a new amenities"""
 
-    amenity = storage.get(Amenity, amenities_id)
-
+    amenity = storage.get(Amenity, amenity_id)
+    valeurs = request.get_json()
     if not amenity:
         abort(404)
 
-    if not request.get_json():
+    if not valeurs:
         abort(400, "Not a JSON")
 
     passs = ['id', 'created_at', 'updated_at']
 
-    valeurs = request.get_json()
 
     for key, value in valeurs.items():
         if key not in passs:
