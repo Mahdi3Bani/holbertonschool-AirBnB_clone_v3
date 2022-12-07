@@ -24,7 +24,7 @@ def teardown_appcontext(self):
 def handle_error(error):
     """handle errors"""
 
-    return jsonify({"error": "Not found",}), 404
+    return jsonify({"error": "Not found", }), 404
 
 
 if __name__ == "__main__":
