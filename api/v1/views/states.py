@@ -1,9 +1,7 @@
 #!/usr/bin/python3
 """
-all u need to manipulate states
+index
 """
-
-
 from api.v1.app import app_views
 from models import storage
 from models.state import State
