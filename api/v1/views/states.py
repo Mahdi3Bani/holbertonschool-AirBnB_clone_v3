@@ -67,11 +67,11 @@ def put_state(state_id):
 
     passs = ['id', 'created_at', 'updated_at']
 
-    obj = request.get_json()
 
-    value = request.get_json()
 
-    for key, value in value.items():
+    valeurs = request.get_json()
+
+    for key, value in valeurs.items():
         if key not in passs:
             setattr(state, key, value)
 
