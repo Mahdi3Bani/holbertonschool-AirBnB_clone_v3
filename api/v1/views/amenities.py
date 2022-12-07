@@ -18,7 +18,8 @@ def get_amenities():
     return jsonify(list_of_amenities)
 
 
-@app_views.route('/amenities/<amenity_id>/', strict_slashes=False, methods=['GET'])
+@app_views.route('/amenities/<amenity_id>/', strict_slashes=False,
+                 methods=['GET'])
 def get_amenity(amenity_id):
     """get amenity"""
     amenity = storage.get(Amenity, amenity_id)
@@ -68,7 +69,6 @@ def put_amenity(amenity_id):
         abort(400, "Not a JSON")
 
     passs = ['id', 'created_at', 'updated_at']
-
 
     for key, value in valeurs.items():
         if key not in passs:
