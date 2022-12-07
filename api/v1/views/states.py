@@ -28,9 +28,7 @@ def get_state(state_id):
     return jsonify(state.to_dict(state))
 
 
-@app_views.route('/states/<state_id>',
-                 strict_slashes=False,
-                 methods=['DELETE'])
+@app_views.route('/states/<state_id>', strict_slashes=False, methods=['DELETE'])
 def delete_state(state_id):
     """delete a state"""
     try:
@@ -66,8 +64,6 @@ def put_state(state_id):
         abort(400, "Not a JSON")
 
     passs = ['id', 'created_at', 'updated_at']
-
-
 
     valeurs = request.get_json()
 
