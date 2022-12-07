@@ -63,6 +63,7 @@ def post_city(state_id):
     obj = City(**req)
     obj.state_id = state_id
     obj.save()
+    
     return (jsonify(obj.to_dict()), 201)
 
 
