@@ -17,7 +17,7 @@ def get_cities(state_id):
     if not state:
         abort(404)
     list_of_cities = []
-    for i in  state.cities:
+    for i in state.cities:
         list_of_cities.append(i.to_dict())
 
     return jsonify(list_of_cities)
@@ -63,7 +63,6 @@ def post_city(state_id):
 
 
 @app_views.route('/cities/<city_id>', methods=['PUT'], strict_slashes=False)
-
 def put_city(city_id):
     """Update a new state"""
 
