@@ -30,4 +30,4 @@ def number_of_object():
     for i in classes:
         dic[i] = storage.count(classes[i])
 
-    return jsonify(dic)
+    return dic
