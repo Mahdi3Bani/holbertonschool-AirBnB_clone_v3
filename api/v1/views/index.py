@@ -12,6 +12,7 @@ from api.v1.views import app_views
 from flask import jsonify
 from models import storage
 
+
 @app_views.route('/api/v1/stats', methods=['GET'], strict_slashes=False)
 def status():
     """ Status of API """
@@ -23,12 +24,11 @@ def number_of_object():
     '''
     retrieves the number of each objects by type
     '''
-    classes = {'states': State, 'users': User,
-               'amenities': Amenity, 'cities': City,
-               'places': Place, 'reviews': Review
-               }
-    dic = {}
-    for i in classes:
-        dic[i] = storage.count(classes[i])
+    classes = [Amenity, City, Place, Review, State, User]
+    classes_names = ["amenities", "cities", "places", "reviews", "states", "users"]
 
-    return jsonify(dict)
+    dic = {}
+    for i in range (len(classes)):
+        dic[classes_names[i]] = storage.count(classes[i])
+
+    return jsonify(dic)
