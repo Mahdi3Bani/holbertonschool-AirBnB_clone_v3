@@ -49,7 +49,7 @@ def post_state():
         abort(400, "Missing name")
     req = request.get_json()
     obj = State(**req)
-    return make_response(jsonify(obj.to_dict()), 201)
+    return (jsonify(obj.to_dict()), 201)
 
 
 @app_views.route('/states/<state_id>', methods=["PUT"])
@@ -73,4 +73,4 @@ def put_state(state_id):
             setattr(state, key, value)
 
     storage.save()
-    return make_response(jsonify(state.to_dict()), 200)
+    return (jsonify(state.to_dict()), 200)
