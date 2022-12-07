@@ -41,7 +41,7 @@ def delete_state(state_id):
         abort(404)
 
 
-@app_views.route('/api/v1/states', methods=['POST'], strict_slashes=False)
+@app_views.route('/states', strict_slashes=False, methods=['POST'])
 def post_state():
     """create a new state"""
     if not request.get_json():
