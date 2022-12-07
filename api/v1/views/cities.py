@@ -14,7 +14,7 @@ from flask import jsonify, abort, request
                  methods=['GET'])
 def get_cities(state_id):
     """ger city"""
-    if storage.get(State, state_id):
+    if not storage.get(State, state_id):
         abort(404)
     list_of_cities = []
     for i in storage.get(State, state_id).cities:
@@ -28,11 +28,10 @@ def get_cities(state_id):
                  methods=['GET'])
 def get_city(city_id):
     """get city"""
-    cityy = storage.get(State, city_id)
-    if cityy is None:
+    if not storage.get(State, city_id):
         abort(404)
 
-    return jsonify(cityy.to_dict())
+    return jsonify(storage.get(State, city_id).to_dict())
 
 
 @ app_views.route('/cities/<city_id>',
@@ -42,7 +41,8 @@ def delete_city(city_id):
     """delete a city"""
     if not storage.get(City, city_id):
         abort(404)
-    storage.delete(storage.get(State, city_id))
+    storage.delete(storage.get(City, city_id)
+)
     storage.save()
     return (jsonify({}), 200)
 
