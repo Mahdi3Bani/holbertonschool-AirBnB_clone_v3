@@ -9,8 +9,8 @@ from flask import jsonify, abort, request
 
 
 @app_views.route('/users', strict_slashes=False, methods=['GET'])
-def get_user():
-    """ger user"""
+def get_users():
+    """ger users"""
     states = []
     for i in storage.all(User).values():
         states.append(i.to_dict())
@@ -30,7 +30,7 @@ def get_user(user_id):
 
 @app_views.route('/users/<user_id>', strict_slashes=False,
                  methods=['DELETE'])
-def delete_state(user_id):
+def delete_user(user_id):
     """delete a user"""
     if not storage.get(User, user_id):
         abort(404)
