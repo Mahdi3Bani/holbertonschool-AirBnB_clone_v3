@@ -7,6 +7,7 @@ from models import storage
 from models.place import Place
 from models.city import City
 from flask import jsonify, abort, request
+from models.user import User
 
 
 @app_views.route('/cities/<city_id>/places', methods=['GET'],
@@ -60,8 +61,13 @@ def post_place(city_id):
         abort(400, "Missing name")
     if 'user_id' not in request.get_json():
         abort(400, "Missing user_id")
+    
 
     req = request.get_json()
+    user = storage.get(User, req['user_id'])
+    if not user:
+        abort(404)
+
     obj = Place(**req)
     obj.city_id = city_id
     obj.save()
