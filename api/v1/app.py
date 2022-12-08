@@ -12,21 +12,17 @@ app = Flask(__name__)
 CORS(app, origins="0.0.0.0")
 app.register_blueprint(app_views)
 
+
 @app.errorhandler(404)
 def handle_error(error):
-    """handle errors"""
 
     return jsonify({"error": "Not found", }), 404
 
+
 @app.teardown_appcontext
 def teardown_appcontext(self):
-    """
-    calls storage.close(
-    """
+
     storage.close()
-
-
-
 
 
 if __name__ == "__main__":
