@@ -21,7 +21,7 @@ def handle_error(error):
 
 
 @app.teardown_appcontext
-def teardown_appcontext(self):
+def teardown_appcontext(exception):
 
     storage.close()
 
