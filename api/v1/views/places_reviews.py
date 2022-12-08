@@ -57,10 +57,11 @@ def post_review(place_id):
         abort(404)
     if not request.get_json():
         abort(400, "Not a JSON")
-    if 'text' not in request.get_json():
-        abort(400, "Missing text")
+    
     if 'user_id' not in request.get_json():
         abort(400, "Missing user_id")
+    if 'text' not in request.get_json():
+        abort(400, "Missing text")
 
     req = request.get_json()
     user = storage.get(User, req['user_id'])
@@ -79,7 +80,7 @@ def post_review(place_id):
 def put_review(place_id):
     """Update a new state"""
 
-    place = storage.get(Place, place_id)
+    place = storage.get(Review, Review_id)
 
     if not place:
         abort(404)
