@@ -1,7 +1,6 @@
 #!/usr/bin/python3
-
-
 """its just a comment to try a new thing"""
+
 
 from flask import Flask, Blueprint, jsonify
 from flask_cors import CORS
@@ -30,4 +29,3 @@ if __name__ == '__main__':
     hosts = getenv('HBNB_API_HOST', default='0.0.0.0')
     ports = getenv('HBNB_API_PORT', default='5000')
     app.run(host=hosts, port=ports, threaded=True)
-
