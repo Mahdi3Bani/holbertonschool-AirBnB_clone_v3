@@ -14,7 +14,7 @@ from models.user import User
                  strict_slashes=False)
 def get_places(city_id):
     """
-    
+
     """
     city = storage.get(City, city_id)
 
@@ -61,7 +61,6 @@ def post_place(city_id):
         abort(400, "Missing name")
     if 'user_id' not in request.get_json():
         abort(400, "Missing user_id")
-    
 
     req = request.get_json()
     user = storage.get(User, req['user_id'])
