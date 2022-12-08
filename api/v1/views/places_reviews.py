@@ -69,7 +69,7 @@ def post_review(place_id):
         abort(404)
 
     obj = Review(**req)
-    obj.place = place_id
+    obj.place_id = place_id
     obj.save()
 
     return (jsonify(obj.to_dict()), 201)
