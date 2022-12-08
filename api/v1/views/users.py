@@ -2,10 +2,10 @@
 """
 all u need to manipulate the users
 """
-from api.v1.app import app_views
+from flask import jsonify, abort, request
+from api.v1.views import app_views
 from models import storage
 from models.user import User
-from flask import jsonify, abort, request
 
 
 @app_views.route('/users', strict_slashes=False, methods=['GET'])

@@ -2,10 +2,10 @@
 """
 all u need to manipulate the states
 """
-from api.v1.app import app_views
+from flask import jsonify, abort, request
+from api.v1.views import app_views
 from models import storage
 from models.state import State
-from flask import jsonify, abort, request
 
 
 @app_views.route('/states', strict_slashes=False, methods=['GET'])

@@ -2,11 +2,11 @@
 """
 all u need to manipulate the cities
 """
-from api.v1.app import app_views
-from models import storage
-from models.state import State
-from models.city import City
 from flask import jsonify, abort, request
+from api.v1.views import app_views
+from models import storage
+from models.city import City
+from models.state import State
 
 
 @app_views.route('/states/<state_id>/cities', methods=['GET'],
