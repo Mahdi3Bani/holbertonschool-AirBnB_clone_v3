@@ -12,15 +12,17 @@ from flask import jsonify, abort, request
 @app_views.route('/cities/<city_id>/places', methods=['GET'],
                  strict_slashes=False)
 def get_places(city_id):
-    """ger places"""
+    """
+    
+    """
     city = storage.get(City, city_id)
+
     if not city:
         abort(404)
-    list_of_places = []
-    for i in city.places:
-        list_of_places.append(i.to_dict())
 
-    return jsonify(list_of_places)
+    places = [place.to_dict() for place in city.places]
+
+    return jsonify(places)
 
 
 @app_views.route('/places/<place_id>', methods=['GET'],
